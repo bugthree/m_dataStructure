@@ -1,4 +1,5 @@
-// lecture p5 
+// lecture p5
+// https://sp21.datastructur.es/ 
 // 对链表的封装
 // 对外提供接口，供客户端使用
 public class SLList {
@@ -12,39 +13,39 @@ public class SLList {
     }
   }
   
-  private IntNode first;
+  // 将first 改为哨兵(),sentinel.next
+  private IntNode sentinel;
   private int size;
 
   public SLList(){
-    first = null;
+    sentinel = new IntNode(63, null);
     size = 0;
   }
   public SLList(int x){
-    first = new IntNode(x, null);
+    sentinel = new IntNode(63, null);// 63 时哨兵，无所谓是几
+    sentinel.next = new IntNode(x, null);
     size = 1;
   }
   
   // 将x添加到list链表得最头部
   public void addFirst(int x){
-    first = new IntNode(x, first);
+    sentinel.next = new IntNode(x, sentinel.next);
     size = size + 1;
   }
 
   // 返回链表中的第一个元素
   public int getFirst(){
-    return first.item;
+    return sentinel.next.item;
   }
 
   // 在链表的末尾添加一个元素
   public void addLast(int x){
     size = size + 1;
     // 当有一个空的构造函数时，会出现一个bug，
-    if (first == null){
-      first = new IntNode(x, null);
-      return;
-    }
+    // p.next  = null.next
+    // 使用哨兵
 
-    IntNode p = first;
+    IntNode p = sentinel;
 
     while (p.next != null){
       p = p.next;
@@ -66,18 +67,7 @@ public class SLList {
   // 该方法调用私有静态方法进行递归
   // 该方法速度慢。暂时舍弃
   public int size_for() {
-    return size(first);
-  }
-
-  // 
-  public int iterativeSize(){
-    IntNode p = first;
-    int s = 0;
-    while (p.next != null){
-      p = p.next;
-      s = s + 1;
-    }
-    return s;
+    return size(sentinel.next);
   }
 
   public int size(){

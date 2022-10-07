@@ -13,14 +13,21 @@ public class SLList {
   }
   
   private IntNode first;
+  private int size;
 
+  public SLList(){
+    first = null;
+    size = 0;
+  }
   public SLList(int x){
     first = new IntNode(x, null);
+    size = 1;
   }
   
   // 将x添加到list链表得最头部
   public void addFirst(int x){
     first = new IntNode(x, first);
+    size = size + 1;
   }
 
   // 返回链表中的第一个元素
@@ -30,12 +37,20 @@ public class SLList {
 
   // 在链表的末尾添加一个元素
   public void addLast(int x){
+    size = size + 1;
+    // 当有一个空的构造函数时，会出现一个bug，
+    if (first == null){
+      first = new IntNode(x, null);
+      return;
+    }
+
     IntNode p = first;
 
     while (p.next != null){
       p = p.next;
     }
     p.next = new IntNode(x, null);
+
   }
 
   // 递归,返回一个大小
@@ -49,7 +64,8 @@ public class SLList {
     return 1 + size(p.next);
   }
   // 该方法调用私有静态方法进行递归
-  public int size() {
+  // 该方法速度慢。暂时舍弃
+  public int size_for() {
     return size(first);
   }
 
@@ -64,11 +80,13 @@ public class SLList {
     return s;
   }
 
+  public int size(){
+    return size;
+  }
+
   public static void main(String[] args){
     // 创建一个整数列表
-    SLList L = new SLList(15);
-    L.addFirst(10);
-    L.addFirst(5);
+    SLList L = new SLList();
     L.addLast(200);
     System.out.println(L.size());
   }

@@ -1,3 +1,4 @@
+// lecture p5 
 // 对链表的封装
 // 对外提供接口，供客户端使用
 public class SLList {
@@ -39,6 +40,8 @@ public class SLList {
 
   // 递归,返回一个大小
   // 遍历的方法 会很慢，尤其是对于一个大数据而言
+  // 如何优化呢？
+  // 不要在调用size()方法时，再去遍历这个链表，而是在这个链表构建的时候，就去构建length 这个数据
   private static int size(IntNode p){
     if(p.next == null){
       return 1;

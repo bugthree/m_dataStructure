@@ -17,7 +17,7 @@ inline void SeqArray<elemType>::insert(elemType x, Position index)
 	}
 	for (int end = Last; end >= index - 1; end--) 
 	{
-		Data[end + 1] = Data[end];//倒着循环，把最后一个值赋给他的下一个
+		Data[end + 1] = Data[end];//倒着循环，把最后一个值赋给他的下一个,相当于将插入的索引 index后的所有数依次向后复制一份
 	}
 	Data[index - 1] = x;//index-1 是因为从0 开始
 	Last++;//更新长度

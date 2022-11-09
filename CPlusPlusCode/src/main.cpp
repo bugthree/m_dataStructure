@@ -6,26 +6,29 @@
 #include "LinkList.h"
 #include "LinkList.cpp"
 
+#include "Vector.h"
+
 void test_SeqArray();
 void test_LinkList();
-
+void test_Vector();
 int main()
 {
-	test_SeqArray();
-	test_LinkList();
+	//test_SeqArray();
+	//test_LinkList();
+	void test_Vector();
 }
 
 void test_SeqArray()
 {
 	std::cout << "~~~~~~~~show seq array~~~~~~~~~~~~" << std::endl;
-	SeqArray<int> nonelist;//ÎŞ²Î¹¹ÔìµÃµ½µÄÏßĞÔ±í
+	SeqArray<int> nonelist;//æ— å‚æ„é€ å¾—åˆ°çš„çº¿æ€§è¡¨
 	std::cout << "the size is: " << nonelist.size() << std::endl;
 	int a[] = { 1, 2, 3, 4, 0, 7 , 7, 9, 10, 21};
 	//cout << sizeof(a)/4 << endl;
 	SeqArray<int> list(a, 10);
 	std::cout << "the size is: " << list.size() << std::endl;
 	list.printData();
-	std::cout << "°´Öµ²éÑ¯£¬·µ»ØÆäÎ»ÖÃ " << list.findByValue(1) << std::endl;
+	std::cout << "æŒ‰å€¼æŸ¥è¯¢ï¼Œè¿”å›å…¶ä½ç½® " << list.findByValue(1) << std::endl;
 	list.insert(10, 2);
 	list.printData();
 	list.deleteByIndex(list.findByValue(3));
@@ -35,7 +38,7 @@ void test_SeqArray()
 void test_LinkList()
 {
 	std::cout << "~~~~~~~~show link list~~~~~~~~~~~~" << std::endl;
-	LinkList_namespace::LinkList<int> nollist;//ÎŞ²Î¹¹ÔìµÃµ½µÄÁ´±í
+	LinkList_namespace::LinkList<int> nollist;//æ— å‚æ„é€ å¾—åˆ°çš„é“¾è¡¨
 	int aa[] = { 9, 7, 6, 5 };
 	LinkList_namespace::LinkList<int> llist(aa, 4);
 	
@@ -72,4 +75,11 @@ void test_LinkList()
 
 	//test 
 	std::cout << "Link list find valus 5 ,the index is : " << llist.findByValue(5) << std::endl;
+}
+
+void test_Vector()
+{
+	//Vector<int> Vec;
+	/*Vector<double> dVec(10);*/
+	//Vec.push_back(1);
 }

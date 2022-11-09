@@ -20,7 +20,7 @@ namespace LinkList_namespace {
 		for (int i = 0; i < n; i++) {
 			LinkNode<elemType>* p = new LinkNode<elemType>;
 			p->_data = array[i];
-			p->_next = _head->_next;// ½«nullptr ¸³Öµ¸ø p->_next 
+			p->_next = _head->_next;// å°†nullptr èµ‹å€¼ç»™ p->_next 
 			_head->_next = p;//update
 			length++;
 		}
@@ -72,7 +72,7 @@ namespace LinkList_namespace {
 	{
 		LinkNode<elemType>* p = _head->_next;
 		LinkNode<elemType>* new_p = new LinkNode<elemType>;
-		int count = 1;// ±ØĞëÊÇ1£¬ÒòÎªÓĞ¸öÍ·½áµã
+		int count = 1;// å¿…é¡»æ˜¯1ï¼Œå› ä¸ºæœ‰ä¸ªå¤´ç»“ç‚¹
 		while (p != nullptr) {
 			if (index == count - 1) {
 				break;
@@ -82,8 +82,8 @@ namespace LinkList_namespace {
 		}
 		new_p->_data = x;
 
-		new_p->_next = p->_next;// ½«pµÄÏÂÒ»¸ö½Úµã(µØÖ·)¸³Öµ¸øĞÂ½Úµãnew_p(µØÖ·)
-		p->_next = new_p;// ½«ĞÂ½Úµã(µØÖ·)¸³Öµ¸ø¸ÃindexÏÂµÄp
+		new_p->_next = p->_next;// å°†pçš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹(åœ°å€)èµ‹å€¼ç»™æ–°èŠ‚ç‚¹new_p(åœ°å€)
+		p->_next = new_p;// å°†æ–°èŠ‚ç‚¹(åœ°å€)èµ‹å€¼ç»™è¯¥indexä¸‹çš„p
 	}
 
 	template<class elemType>
@@ -91,19 +91,19 @@ namespace LinkList_namespace {
 	{
 		LinkNode<elemType>* p = _head;
 		LinkNode<elemType>* temp = new LinkNode<elemType>;
-		int count = 1;// ±ØĞëÊÇ1	
+		int count = 1;// å¿…é¡»æ˜¯1	
 		while (p != nullptr) {
 			if (index == count - 1) { 
 				break; 
 			}
-			p = p->_next;//ÕÒµ½µÚi-1¸ö½áµãµÄ p
+			p = p->_next;//æ‰¾åˆ°ç¬¬i-1ä¸ªç»“ç‚¹çš„ p
 			count++;
 		}
 		if (p == nullptr || p->_next == nullptr) throw "Location";
 		else {
-			q = p->_next;// ÁÙÊ±±£´æ±»É¾³ı½áµãµÄµØÖ·£¬ÒÔ±¸ÊÍ·Å
-			elemType x = temp->_data;// ±£´æÒªÉ¾³ıµÄ½áµãÖµ
-			p->_next = temp->_next;//Áîp->_next Ö¸Ïòindex µÄºó¼Ì½áµã
+			temp = p->_next;// ä¸´æ—¶ä¿å­˜è¢«åˆ é™¤ç»“ç‚¹çš„åœ°å€ï¼Œä»¥å¤‡é‡Šæ”¾
+			elemType x = temp->_data;// ä¿å­˜è¦åˆ é™¤çš„ç»“ç‚¹å€¼
+			p->_next = temp->_next;//ä»¤p->_next æŒ‡å‘index çš„åç»§ç»“ç‚¹
 			delete(temp);
 			return x;
 		}
@@ -121,7 +121,7 @@ namespace LinkList_namespace {
 		return p->_data;
 		if (count == index) {
 			return p->_data;
-		}// ÕÒµ½·µ»ØÖ¸Õëp ¼´µØÖ·
+		}// æ‰¾åˆ°è¿”å›æŒ‡é’ˆp å³åœ°å€
 	}
 
 	template<class elemType>
